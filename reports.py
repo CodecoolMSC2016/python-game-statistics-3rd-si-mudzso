@@ -6,7 +6,7 @@ def import_input_file(filename="game_stat.txt"):
             line = line.strip("\n")
             for word in line.split("\t"):
                 if word.isdigit():
-                    my_list.append(int(word))
+                    my_list.append(float(word))
                 else:
                     my_list.append(word)
             data_file.append(my_list)
@@ -62,14 +62,3 @@ def get_genres(file_name):
         my_list.append(file_name[game_counter][3])
     my_list = sorted(set(my_list))
     return list(my_list)
-
-
-def data_for_export():
-    my_list = []
-    my_list.append(count_games(data_file))
-    my_list.append(decide(data_file, 2000))
-    my_list.append(get_latest(data_file))
-    my_list.append(count_by_genre(data_file, "RPG"))
-    my_list.append(get_line_number_by_title(data_file, "Counter-Strike"))
-    my_list.append(get_genres(data_file))
-    return str(my_list)
